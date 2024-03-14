@@ -1,6 +1,7 @@
-const express = require("express");
+import express from 'express';
 import cors from "cors";
 import cookieParser from "cookie-parser";
+// import multer from "multer";
 
 const app = express();
 
@@ -25,6 +26,14 @@ app.use(express.static("public"));
 
 //To access & set the browser cookie from server
 app.use(cookieParser());
+
+//routes import
+import useRouter from './routes/user.routes.js';
+
+//routes declaration
+app.use('/api/v1/users', useRouter);
+
+//http://localhost:8000/api/v1/users/register
 
 export default app;
 
